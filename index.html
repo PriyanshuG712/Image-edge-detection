@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image-edge-detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class=" heading">Various Edge Detection Techniques In Image Processing</h1>
+        </div>
+        <div class="subcontainer">
+            <div class="subsubcontainer1">
+                <h2 class="menu"> Menu</h2>
+                <div class="leftcontainer">
+                    <button class="Browsebtn" id="browseImageBtn"> Browse Image</button>
+                    <h3>edge Detection method</h3>
+                    <div class="methods" display="inline">
+                        <button class="btn">Roberts</button>
+                        <button class="btn">Prewitt</button>
+                        <button class="btn">Sobel</button>
+                        <button class="btn">Canny</button>
+                        <button class="btn">LoG</button>
+                        <button class="btn">Kirsch</button>
+                        <button class="btn">Isotropic</button>
+                        <button class="btn">Compass</button>
+                        <button class="btn">Centered Difference</button>
+                    </div>
+                </div>
+                <div class="flex-item-left" id="edgeDetectionBtn">Edge Detection</div>
+                <div class="flex-item-right" id="resetBtn">Reset</div>
+                <div class="last" id=" exitBtn">Exit</div>
+            </div>
+            <div class="subsubcontainer2">
+                <div class=" result">
+                    <div class="input">
+                        <img src="https://placehold.co/300x200" alt="Input Image" class="mb-2">
+                        <p class="text-center">Input Image</p>
+                    </div>
+                    <div class="input">
+                        <img src="https://placehold.co/300x200" alt="Output Image" class="mb-2">
+                        <p class="text-center">Output Image</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
