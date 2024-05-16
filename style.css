@@ -9,23 +9,38 @@ body{
     display:flex;
     justify-content: center;
     text-align: center;
-    
-
 }
+
+.heading{
+  justify-content: center;
+  text-align: center;
+}
+
 .Browsebtn{
     background-color: #007bff; 
     color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
     font-weight: bold;
     border-radius: 0.25rem;
     border: none;
-    padding:2px;
+    padding: 2px;
     margin:2px;
     width:26vw;
     height:5vh;
     
+    
 }
+
 .Browsebtn:hover {
     background-color: #0056b3; /* Darker shade of blue */
+}
+
+#input-file{
+  display: none;
 }
 
 .methods{
@@ -43,7 +58,7 @@ body{
     background-color:white;
     border:none;
     cursor:pointer;
-    display: inline;
+    /* display: inline; */
     
 
 }
@@ -70,30 +85,11 @@ body{
     font-weight: bold;
     margin:6px;
   }
-  
-  .flex-item-right {
-    background-color:red;
-    padding: 10px;
-    flex: 50%;
-    width:25%;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    margin:6px;
+
+  #resetBtn{
+    background-color: red;
   }
-  
-  .last {
-    background-color:grey;
-    padding: 10px;
-    flex: 35%;
-    width:25%;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    margin:6px;
-  }
+
   .result{
     width: 100%;
     padding: 0.5rem; /* You can adjust this value according to your needs */
@@ -114,3 +110,7 @@ body{
     flex-direction: row;
   }
   
+  #inputImage{
+    height: 200px;
+    width: 300px;
+  }

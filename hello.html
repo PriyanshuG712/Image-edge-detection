@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canny Edge Detection</title>
+    <script src="opencv.js" async></script>
+</head>
+<body>
+    <h1>Canny Edge Detection</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <canvas id="canvas"></canvas>
+
+    <script>
+        // Function to perform Canny edge detection
+        function performCanny() {
+            let src = cv.imread('canvas');
+            let dst = new cv.Mat();
+            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+            cv.Canny(src, dst, 50, 150, 3, false);
+            cv.imshow('canvas', dst);
+            src.delete();
+            dst.delete();
+        }
+
+        // Function to handle file input
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                let img = new Image();
+                img.onload = function() {
+                    let canvas = document.getElementById('canvas');
+                    let ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    performCanny();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
