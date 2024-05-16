@@ -1,78 +1,113 @@
+const body = document.querySelector("body");
+const browseImageBtn = document.getElementById("browseImageBtn");
+const resetBtn = document.getElementById("resetBtn");
+const inputImage = document.getElementById("inputImage");
+const outputImage = document.getElementById("outputImage");
+const button = document.querySelectorAll("button");
+const inputFile = document.getElementById("input-file");
+cv["onRuntimeInitialized"] = () => {
+  console.log("OpenCV.js is ready");
 
-
-
-const body=document.querySelector('body');
-const browseImageBtn = document.getElementById('browseImageBtn');
-const resetBtn = document.getElementById('resetBtn');
-const inputImage = document.getElementById('inputImage');
-const outputImage = document.getElementById('outputImage');
-const button= document.querySelectorAll('button');
-const inputFile= document.getElementById('input-file');
-cv['onRuntimeInitialized'] = () => {
-    console.log('OpenCV.js is ready');
-
-    // Event listener for input file change
-    inputFile.onchange = function() {
-        inputImage.src = URL.createObjectURL(inputFile.files[0]);
-    };
-
-
+  // Event listener for input file change
+  inputFile.onchange = function () {
+    inputImage.src = URL.createObjectURL(inputFile.files[0]);
+  };
+};
 // inputFile.onchange=function(){
 //     inputImage.src= URL.createObjectURL(inputFile.files[0]);
 // }
 
 let arr = Array.from(button);
-arr.forEach(button => {
-    button.addEventListener('click', (e) =>{
-        if(e.target.innerHTML == 'Roberts'){
-            // string = eval(string);
-            // input.value = string;
-            body.style.backgroundColor="pink";
-        }
-
-        else if(e.target.innerHTML == 'Prewitt'){
-
-        }
-        else if(e.target.innerHTML == 'Sobel'){
-            
-        }
-        else if(e.target.innerHTML == 'Canny'){
-            let src = cv.imread(inputImage);
-
-        // Convert image to grayscale
-        let gray = new cv.Mat();
-        cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
-
-        // Apply edge detection algorithm (e.g., Sobel)
-        let dst = new cv.Mat();
-        cv.Sobel(gray, dst, cv.CV_8U, 1, 0, 3, 1, 0, cv.BORDER_DEFAULT);
-
-        // Convert result Mat to image
-        outputImage.src=URL.createObjectURL(cv.imshow(outputImage, dst));
-
-        // Free memory
-        src.delete();
-        gray.delete();
-        dst.delete();
-        }
-        else if(e.target.innerHTML == 'LoG'){
-            
-        }
-        else if(e.target.innerHTML == 'Kirsch'){
-            
-        }
-        else if(e.target.innerHTML == 'Isotropic'){
-            
-        }
-        else if(e.target.innerHTML == 'Compass'){
-            
-        }
-        else if(e.target.innerHTML == 'Centered Difference'){
-            
-        }
-        
-    });
+arr.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    if (e.target.innerHTML == "Roberts") {
+        let file = inputFile.files[0];
+        let reader = new FileReader();
+        reader.onload = function (event) {
+          let img = new Image();
+          img.onload = function () {
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            performRoberts();
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    } else if (e.target.innerHTML == "Prewitt") {
+    } else if (e.target.innerHTML == "Sobel") {
+        let file = inputFile.files[0];
+          let reader = new FileReader();
+          reader.onload = function (event) {
+            let img = new Image();
+            img.onload = function () {
+              let canvas = document.getElementById("canvas");
+              let ctx = canvas.getContext("2d");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+              performSobel();
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+    } else if (e.target.innerHTML == "Canny") {
+      // Function to handle file input
+          let file = inputFile.files[0];
+          let reader = new FileReader();
+          reader.onload = function (event) {
+            let img = new Image();
+            img.onload = function () {
+              let canvas = document.getElementById("canvas");
+              let ctx = canvas.getContext("2d");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+              performCanny();
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+    } else if (e.target.innerHTML == "LoG") {
+    } else if (e.target.innerHTML == "Kirsch") {
+    } else if (e.target.innerHTML == "Isotropic") {
+    } else if (e.target.innerHTML == "Compass") {
+    } else if (e.target.innerHTML == "Centered Difference") {
+    }
+  });
 });
+
+function performCanny() {
+  let src = cv.imread("canvas");
+  let dst = new cv.Mat();
+  cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+  cv.Canny(src, dst, 50, 150, 3, false);
+  cv.imshow("canvas", dst);
+  src.delete();
+  dst.delete();
+}
+
+function performSobel() {
+    let src = cv.imread('canvas');
+    let dst = new cv.Mat();
+    cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+    cv.Sobel(src, dst, cv.CV_8U, 1, 1, 3, 1, 0, cv.BORDER_DEFAULT);
+    cv.imshow('canvas', dst);
+    src.delete();
+    dst.delete();
+}
+
+function performRoberts() {
+    let src = cv.imread('canvas');
+    let dst = new cv.Mat();
+    cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+    cv.Sobel(src, dst, cv.CV_8U, 1, 0, 1, 1, 0, cv.BORDER_DEFAULT);
+    cv.imshow('canvas', dst);
+    src.delete();
+    dst.delete();
+}
 // // Event listeners
 // browseImageBtn.addEventListener('click', () => {
 //     // Simulate image browsing (replace placeholder with actual image selection logic)
@@ -95,4 +130,3 @@ arr.forEach(button => {
 //     inputImage.src = 'https://placehold.co/300x200';
 //     outputImage.src = 'https://placehold.co/300x200';
 // });
-}
