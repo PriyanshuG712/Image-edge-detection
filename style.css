@@ -1,120 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
-body{
-    background-color:  #f0f0f0;
+:root {
+  --main-color: #ff0062;
+  --secondary-color: #000000;
+  --tertiary-color: #f1f1f1;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-
-.header{
-    color:rgb(238, 130, 130);
-    display:flex;
-    justify-content: center;
-    text-align: center;
+html {
+  scroll-behavior: smooth;
+  /* overflow: hidden; */
 }
 
-.heading{
+body {
+  background-color: var(--tertiary-color);
+  /* overflow: hidden; */
+  z-index: 1;
+}
+/* .video-container { */
+/* position: absolute; */
+/* top: 0; */
+/* left: 0; */
+/* width: 100%; */
+/* height: 100%; */
+/* overflow: hidden; */
+/* z-index: -1; Ensures video stays behind content */
+/* opacity: 70%; */
+/* } */
+
+/* Video styling to cover the container */
+/* .background-video {
+  /* position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video covers entire area 
+  transform: translate(-50%, -50%);
+} */
+.navbar {
+  position: fixed;
+  top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 1360px;
+  height: 60px;
+  margin: 5px 40px;
+  backdrop-filter: blur(5px);
+  outline-offset: 0px;
+  background-color: rgba(247, 247, 247, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  outline: 3px #333;
+  justify-content: left;
+  gap: 200px;
+  padding: 4px 40px 4px 40px;
+  z-index: 10;
+}
+.menu-items {
+  display: flex;
+  font-size: large;
+  margin: 10px 3px;
+  padding: 2px 5px;
+  margin-right: 100px;
+  flex-direction: row;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+}
+.navbar img {
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-items a {
+  padding: 0px 10px;
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: all 0.35s ease-in-out;
+}
+.menu-items a:hover {
+  color: var(--main-color);
+  transition: all 0.35s ease-in-out;
+}
+.bg-video {
+  overflow: hidden;
+}
+
+.bg-video video {
+  position: absolute;
+  width: 1519px;
+  height: 110vh;
+  z-index: -1;
+  object-fit: cover;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.text-video {
+  display: flex;
+  z-index: 1;
+  position: relative;
+  flex-direction: column;
+  width: 1519px;
+  height: 110vh;
+  left: 200px;
+}
+.first {
+  position: relative;
+  color: var(--tertiary-color);
+  font-size: 9vw;
+  font-weight: 500;
+  top: 200px;
+  left: 350px;
+}
+.second {
+  position: relative;
+  color: var(--tertiary-color);
+  font-size: 9vw;
+  font-weight: 500;
+  top: 200px;
+  left: 600px;
+}
+.third {
+  position: relative;
+  color: var(--tertiary-color);
+  font-size: 9vw;
+  font-weight: 500;
+  top: 200px;
+  left: 200px;
+}
+#project {
+  width: 1519px;
+  height: 110vh;
+}
+
+.header {
+  position: relative;
+  top: 80px;
+  color: rgb(238, 130, 130);
+  display: flex;
   justify-content: center;
   text-align: center;
+  font-size: 2vw;
+  margin-bottom: 60px;
 }
 
-.Browsebtn{
-    background-color: #007bff; 
-    color:white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    font-weight: bold;
-    border-radius: 0.25rem;
-    border: none;
-    padding: 2px;
-    margin:2px;
-    width:26vw;
-    height:5vh;
-    
-    
+.heading {
+  justify-content: center;
+  text-align: center;
+  font-size: xx-large;
+}
+.leftcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Browsebtn {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  border: none;
+  padding: 2px;
+  margin: 2px;
+  width: 26vw;
+  height: 5vh;
 }
 
 .Browsebtn:hover {
-    background-color: #0056b3; /* Darker shade of blue */
+  background-color: #0056b3; /* Darker shade of blue */
 }
 
-#input-file{
+#input-file {
   display: none;
 }
 
-.methods{
-    
-    display:inline-grid;
-    grid-template-columns:repeat(3,0.8fr);
-    grid-gap:5px;
-    width: 100%;
-
-    
+.methods {
+  display: inline-grid;
+  left: 10px;
+  grid-template-columns: repeat(3, 0.8fr);
+  grid-gap: 5px;
+  width: 100%;
 }
-.btn{
-    height:40px;
-    font-weight: bold;
-    background-color:white;
-    border:none;
-    cursor:pointer;
-    /* display: inline; */
-    
-
+.btn {
+  height: 40px;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  background-color: #eea0a0;
+  border-radius: 10px;
+  /* display: inline; */
 }
-.btn:hover{
-    background-color: grey;
+.btn:hover {
+  background-color: grey;
 }
-.handler{
-    display:flex;
-    display: flex;
-    flex-direction: row;
-    font-size: 30px;
-    text-align: center;
+.handler {
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: center;
 }
 
-  
-  .flex-item-left {
-    background-color: green;
-    padding: 10px;
-    flex: 50%;
-    width:100%;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    margin:6px;
-  }
+.flex-item-left {
+  background-color: green;
+  padding: 10px;
+  display: flex;
+  width: 388px;
+  border-radius: 5px;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin: 26px 0px;
+}
 
-  #resetBtn{
-    background-color: red;
-  }
+.subsubcontainer2{
+  width: 100%;
+}
+.result {
+  width: 100%;
+  padding: 0.5rem; /* You can adjust this value according to your needs */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.input {
+  margin: 20px;
+  padding: 10px;
+  width: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
+.output{
+  margin: 20px;
+  padding: 10px;
+  width: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 80px;
+}
 
-  .result{
-    width: 100%;
-    padding: 0.5rem; /* You can adjust this value according to your needs */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .input{
-    
-    margin:20px;
-    padding:10px;
-    width:fit-content;
-    
-  }
-  .subcontainer{
-    display: flex;
-    flex-direction: row;
-  }
-  
-  #inputImage{
-    height: 200px;
-    width: 300px;
-  }
-  #canvas{
-    height: 200px;
-    width: 300px;
-  }
+#inputImage {
+  height: 300px;
+  width: 500px;
+}
+#canvas {
+  height: 300px;
+  width: 500px;
+}
+
+
+#team {
+  width: 1519px;
+  height: 110vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-pannel{
+  display: flex;
+  flex-direction: column;
+}
