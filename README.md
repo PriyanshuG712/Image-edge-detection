@@ -1,2 +1,3 @@
 "# Image-edge-detection" 
-hello sachin , welcome to the project
+
+Deployment: https://priyanshug712.github.io/Image-edge-detection/
